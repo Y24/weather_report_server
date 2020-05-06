@@ -6,14 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CityEntity implements IEntity {
-
     public static CityEntity nullCity = new CityEntity("", "");
     private final String province;
     private final String name;
+    private final String chinese;
+
 
     public CityEntity(String province, String name) {
         this.province = province;
         this.name = name;
+        this.chinese = "";
     }
 
     /// regex = province,city
@@ -22,6 +24,18 @@ public class CityEntity implements IEntity {
         final String[] both = regex.split(",", 2);
         province = both[0];
         name = both[1];
+        chinese = null;
+    }
+
+    public CityEntity(String province, String name, String chinese) {
+        this.province = province;
+        this.name = name;
+        this.chinese = chinese;
+    }
+
+
+    public String getChinese() {
+        return chinese;
     }
 
     public String getProvince() {
@@ -43,7 +57,6 @@ public class CityEntity implements IEntity {
                 && province.equals(((CityEntity) obj).province)
                 && name.equals(((CityEntity) obj).name);
     }
-
 
     @Override
     public Map<String, String> toMap() {

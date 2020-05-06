@@ -18,11 +18,6 @@ public class AccountEntity implements IEntity {
      * */
     private final String password;
 
-    public AccountEntity() {
-        this.name = "";
-        this.password = "";
-    }
-
     public AccountEntity(String name, String password) {
         this.name = name;
         this.password = password;
